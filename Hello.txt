@@ -164,3 +164,6 @@ HEAD~1 means "one commit before HEAD" — like saying "go back 1 step."
 
 🔑 Commands Learned Today
 CommandWhat it doesgit restore filenameDiscard unstaged changes in a filegit restore --staged filenameUnstage a file (keep changes)git reset HEAD~1Undo last commit (keep changes)
+
+
+last line i am changing to check how git pull works
