@@ -25,3 +25,72 @@ No commits yet
 
 nothing to commit (create/copy files to trigger)
 ================================================================================
+
+Topic 4 — Your First Commit
+First understand — the 3 stages of Git
+Before we type any command, understand this diagram:
+Working Directory  →  Staging Area  →  Repository
+  (your files)         (git add)       (git commit)
+
+  "I edited files"   "I selected      "I permanently
+                      which ones        saved them"
+                      to save"
+Think of it like this 🏦:
+Git StageBanking AnalogyWorking DirectoryYou filled a withdrawal form (made changes)Staging AreaForm is submitted but not yet processedRepository (Commit)Transaction is posted to the ledger permanently
+
+Step 1 — Create a file
+bashecho "Hello Git! This is my first file." > hello.txt
+Check it's there:
+bashls
+Output:
+hello.txt
+
+Step 2 — Check status
+bashgit status
+Output:
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        hello.txt
+
+nothing added to commit but untracked files present
+Git is saying → "I see a new file but I'm not tracking it yet!"
+
+Step 3 — Add file to Staging Area
+bashgit add hello.txt
+Now check status again:
+bashgit status
+Output:
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   hello.txt
+File is now in the staging area — ready to be committed ✅
+
+Step 4 — Commit the file
+bashgit commit -m "Add hello.txt - my first commit"
+Output:
+[master (root-commit) a1b2c3d] Add hello.txt - my first commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello.txt
+You just saved your first version permanently! 🎉
+The -m flag is your commit message — always write something meaningful so you remember what you changed and why.
+
+Step 5 — Check the log
+bashgit log
+Output:
+commit a1b2c3d4e5f6... (HEAD -> master)
+Author: Doon1 <memescreator009@gmail.com>
+Date:   Sat Jun 28 10:35:00 2025
+
+    Add hello.txt - my first commit
+This is your history log — every commit ever made. Like Oracle's redo log! 😄
+
+🔑 Commands Learned Today
+CommandWhat it doesecho "text" > file.txtCreate a file with textgit statusSee what's changed / stagedgit add filenameMove file to staging areagit commit -m "message"Save staged files permanentlygit logView full commit history
