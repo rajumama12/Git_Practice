@@ -1,0 +1,27 @@
+Hello my name is niraj i start learning git
+
+Command What it does
+
+# git --version Check if Git is installed
+# git config --global user.name "Name"Set your name globally
+# git config --global user.email "email"Set your email globally
+# git config --list View all current Git config values
+
+=================================================================================
+
+to create repo locally use :
+# git init
+
+Output you'll see:
+Initialized empty Git repository in E:/git-practice/.git/
+=================================================================================
+Check the status of your repo :
+# git status
+
+:Output:
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files to trigger)
+================================================================================
