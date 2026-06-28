@@ -94,3 +94,73 @@ This is your history log — every commit ever made. Like Oracle's redo log! �
 
 🔑 Commands Learned Today
 CommandWhat it doesecho "text" > file.txtCreate a file with textgit statusSee what's changed / stagedgit add filenameMove file to staging areagit commit -m "message"Save staged files permanentlygit logView full commit history
+
+
+==================================================================================================
+
+
+
+
+Topic 6 — Undoing Mistakes
+This is one of the most important topics in Git. Everyone makes mistakes — Git lets you undo them safely.
+There are 3 different undo situations. We'll cover them one by one.
+
+Situation 1 — You edited a file but haven't staged it yet
+Let's create this situation:
+bashecho "Oops! This was a mistake." >> Hello.txt
+git status
+Output:
+modified:   Hello.txt
+You realise — I don't want this change at all!
+Undo it:
+bashgit restore Hello.txt
+Now check:
+bashgit status
+nothing to commit, working tree clean
+The mistake is gone. File is back to how it was after your last commit. ✅
+
+⚠️ Warning: git restore permanently throws away your uncommitted changes. Use carefully — there's no recycle bin here!
+
+
+Situation 2 — You staged a file but haven't committed yet
+bashecho "Another mistake." >> Hello.txt
+git add Hello.txt
+git status
+Output:
+Changes to be committed:
+        modified:   Hello.txt
+You realise — I don't want to commit this!
+Undo staging (unstage):
+bashgit restore --staged Hello.txt
+Check status:
+bashgit status
+Changes not staged for commit:
+        modified:   Hello.txt
+The file is unstaged — back to working directory. The change still exists in the file, but it's no longer queued for commit.
+Then if you want to discard the change too:
+bashgit restore Hello.txt
+
+Situation 3 — You committed but want to undo the commit
+bashecho "Bad commit incoming." >> Hello.txt
+git add Hello.txt
+git commit -m "This was a bad commit"
+git log --oneline
+Output:
+9f3a1b2 (HEAD -> master) This was a bad commit
+32e0485 add how to modify and then commit changes doc
+f07718d Add hello.txt - my first commit
+You realise — I want to undo that last commit!
+Undo last commit (keep changes in working directory):
+bashgit reset HEAD~1
+Check log:
+bashgit log --oneline
+32e0485 (HEAD -> master) add how to modify and then commit changes doc
+f07718d Add hello.txt - my first commit
+Bad commit is gone! ✅ But your file changes are still there — just uncommitted. You can fix and recommit properly.
+
+HEAD~1 means "one commit before HEAD" — like saying "go back 1 step."
+
+
+
+🔑 Commands Learned Today
+CommandWhat it doesgit restore filenameDiscard unstaged changes in a filegit restore --staged filenameUnstage a file (keep changes)git reset HEAD~1Undo last commit (keep changes)
