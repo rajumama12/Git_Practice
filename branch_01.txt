@@ -1,0 +1,26 @@
+how to check branches :
+
+git branch
+
+Step 1 — See all branches
+bashgit branch
+Output:
+* master
+The * means currently on this branch.
+
+Step 2 — Create a new branch
+bashgit branch feature-login
+Now check branches:
+bashgit branch
+Output:
+  feature-login
+  * master
+  Branch is created! But notice — * is still on master. Creating a branch doesn't switch to it automatically.
+
+  Step 3 — Switch to the new branch
+  bashgit switch feature-login
+  Output:
+  Switched to branch 'feature-login'
+  Check your prompt — it changed! 👇
+  NIRAJ@DESKTOP-RR4JRRG MINGW64 /e/Git_Practice (feature-login)
+
